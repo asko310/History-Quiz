@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+    <!--FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+<body class="font-[Poppins] bg-black">
+    <header class="bg-white py-5">
+        <nav class="flex justify-between items-center w-[92%] mx-auto">
+            <div>
+                <h1 class="text-black text-2xl font-bold">Testuletz</h1>
+            </div>
+            <div class="md:static md:min-h-fit md:w-auto absolute bg-white min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
+                <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Istorie</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Matematica</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Romana</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Informatica</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Chimie</a>
+                    </li>
+                </ul>
+            </div>
+        <div class="flex items-center gap-6 ">
+            <button class="bg-black text-white px-5 py-2 rounded-full hover:bg-white hover:text-black">Logheaza-te</button>
+            <ion-icon onclick="clickMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+        </div>
+        </nav>
+        <script>
+            function clickMenu(e){
+                console.log(e)
+            }
+        </script>
+    </header>
+</body>
+</html>
