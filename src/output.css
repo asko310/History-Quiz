@@ -576,10 +576,6 @@ video {
   top: -100%;
 }
 
-.top-9 {
-  top: 2.25rem;
-}
-
 .top-\[9\%\] {
   top: 9%;
 }
@@ -681,24 +677,14 @@ video {
   font-weight: 700;
 }
 
-.text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(3 3 3 / var(--tw-text-opacity));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-highlight {
   --tw-text-opacity: 1;
   color: rgb(249 85 11 / var(--tw-text-opacity));
 }
 
-.text-primWhite {
+.text-primary {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(3 3 3 / var(--tw-text-opacity));
 }
 
 .text-secondary {
@@ -706,24 +692,9 @@ video {
   color: rgb(244 243 238 / var(--tw-text-opacity));
 }
 
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-highlight:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 85 11 / var(--tw-bg-opacity));
-}
-
-.hover\:text-black:hover {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .hover\:text-highlight:hover {
