@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <!--FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 
@@ -24,16 +27,17 @@
             <div>
                 <h1 class="text-primary text-2xl font-bold">Testuletz</h1>
             </div>
-            <div class="nav-links text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
+            <div
+                class="nav-links z-10 text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
                 <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
                     <li>
                         <a class="hover:text-highlight" href="#">Teste</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="#">Matematica</a>
+                        <a class="hover:text-highlight" href="#">Despre noi</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="#">Romana</a>
+                        <a class="hover:text-highlight" href="#">Pret</a>
                     </li>
                     <li>
                         <a class="hover:text-highlight" href="#">Informatica</a>
@@ -43,93 +47,110 @@
                     </li>
                 </ul>
             </div>
-        <div class="flex items-center gap-6 ">
-            <button class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Logheaza-te</button>
-            <ion-icon onclick="clickMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden text-primary "></ion-icon>
-        </div>
+            <div class="flex items-center gap-6 ">
+                <button
+                    class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Logheaza-te</button>
+                <ion-icon onclick="clickMenu(this)" name="menu"
+                    class="text-3xl cursor-pointer md:hidden text-primary "></ion-icon>
+            </div>
         </nav>
 
     </header>
 
 
-<!--Testul de test xD-->
+    <!--Testul de test xD-->
 
-<div class="start_btn"><button class="text-2xl px-8 py-4 text-secondary bg-primary rounded-full transition duration-300 ease-in-out transform hover:bg-highlight hover:scale-105 flex mx-auto">Începe Testul</button></div>
+    <div class="start_btn md:py-24 py-12"><button
+            class="text-2xl px-8 py-4 text-secondary bg-primary rounded-full transition duration-300 ease-in-out transform hover:bg-highlight hover:scale-105 flex mx-auto">Începe
+            Testul</button></div>
 
-<!--Info Box-->
-<div class="info_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
-    <div class="info_title "><span class="text-2xl font-bold text-primary text-center">Regulile Quiz-ului</span></div>
-    <div class="info_list">
-        <div class="info">1. Aveti la dispozitie doar <span>15 secunde</span> pentru fiecare intrebare</div>
-        <div class="info">2. Informatia 2,3,4,5 :DDD</div>
-        <div class="info">3. Informatia 2,3,4,5 :DDD</div>
-        <div class="info">4. Informatia 2,3,4,5 :DDD</div>
-        <div class="info">5. Informatia 2,3,4,5 :DDD</div>
-    </div>
-    <div class="buttons">
-        <button class="quit bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Renunță</button>
-        <button class="restart bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Continuă</button>
-    </div>
-</div>
-
-
-<!--Quiz Box-->
-
-<div class="quiz_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
-    <header>
-        <div class="title text-2xl font-bold text-primary">Numele Quiz-ului</div>
-        <div class="timer flex gap-5">
-            <div class="time_left">Timp ramas</div>
-            <div class="timer_sec">15</div>
+    <!--Info Box-->
+    <div
+        class="info_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
+        <div class="info_title "><span class="text-2xl font-bold text-primary text-center">Regulile Quiz-ului</span>
         </div>
-        <div class="time_line"></div>
-    </header>
-    <section>
-        <div class="que_text">
-            <!--Aici am inserat intrebari din JavaScript-->
+        <div class="info_list">
+            <div class="info">1. Aveti la dispozitie doar <span>15 secunde</span> pentru fiecare intrebare</div>
+            <div class="info">2. Informatia 2,3,4,5 :DDD</div>
+            <div class="info">3. Informatia 2,3,4,5 :DDD</div>
+            <div class="info">4. Informatia 2,3,4,5 :DDD</div>
+            <div class="info">5. Informatia 2,3,4,5 :DDD</div>
         </div>
-        <div class="option_list">
-            <!--Aici am inserat optiuni din JavaScript-->
-        </div>
-    </section>
-    <!--Footer-->
-    <footer>
-        <div class="total_que">
-            <!--Nr.intrebarii-->
-            
-        </div>
-        <button class="next_btn bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Urmatoarea Intrebare</button>
-    </footer>
-
-</div>
-
-<!--Result box-->
-<div class="result_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
-    <div class="result_box ">
-        <div class="icon">
-            <i class="fas fa-crown"></i>
+        <div class="buttons">
+            <button
+                class="quit bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Renunță</button>
+            <button
+                class="restart bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Continuă</button>
         </div>
     </div>
-    <div class="score_text text-2xl font-bold text-primary">Ai finisat Quiz-ul!</div>
-    <div class="score_text">
 
-    <!--Text din javascript-->
+
+    <!--Quiz Box-->
+
+    <div
+        class="quiz_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
+        <header>
+            <div class="title text-2xl font-bold text-primary">Numele Quiz-ului</div>
+            <div class="timer flex gap-5">
+                <div class="time_left">Timp ramas:</div>
+                <div class="timer_sec">15</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+        <section>
+            <div class="que_text">
+                <!--Aici am inserat intrebari din JavaScript-->
+            </div>
+            <div class="option_list">
+                <!--Aici am inserat optiuni din JavaScript-->
+            </div>
+        </section>
+        <!--Footer-->
+        <footer>
+            <div class="total_que">
+                <!--Nr.intrebarii-->
+
+            </div>
+            <button
+                class="next_btn bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Urmatoarea
+                Intrebare</button>
+        </footer>
+
     </div>
-    <div class="buttons flex gap-5 flex-col items-center">
-        <button class="restart bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Incearca din nou</button>
-        <button class="quit bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Iesi</button>
+
+    <!--Result box-->
+    <div
+        class="result_box hidden flex gap-5 flex-col items-center shadow box-border h-80 w-80 p-4 mx-auto bg-secondary rounded-[24px] justify-center">
+        <div class="result_box ">
+            <div class="icon">
+                <i class="fas fa-crown"></i>
+            </div>
+        </div>
+        <div class="score_text text-2xl font-bold text-primary">Ai finisat Quiz-ul!</div>
+        <div class="score_text">
+
+            <!--Text din javascript-->
+        </div>
+        <div class="buttons flex gap-5 flex-col items-center">
+            <button
+                class="restart bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Incearca
+                din nou</button>
+            <button
+                class="quit bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Iesi</button>
+        </div>
     </div>
-</div>
 
 
 
     <script>
         const navLinks = document.querySelector('.nav-links')
-        function clickMenu(e){
+        function clickMenu(e) {
             e.name = e.name == 'menu' ? 'close' : 'menu'
             e.classList.toggle('text-highlight')
             navLinks.classList.toggle('top-[9%]')
         }
     </script>
+    <script src="./script.js"></script>
 </body>
+
 </html>
