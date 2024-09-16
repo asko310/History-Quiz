@@ -24,4 +24,41 @@ let questions = [
         ]
     
         },
+        {
+            numb:3,
+            question: "Cum va simtiti?",
+            answer: "1",
+            options: [
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        
+            },
+            {
+                numb:4,
+                question: "Cine a intrebat?",
+                answer: "eu",
+                options: [
+                    "eu",
+                    "tu",
+                    "el",
+                    "ea"
+                ]
+            
+                },
+                {
+                    numb:5,
+                    question: "Inca o intrebare",
+                    answer: "10",
+                    options: [
+                        "1",
+                        "10",
+                        "33",
+                        "66"
+                    ]
+                
+                    },
+
 ]
