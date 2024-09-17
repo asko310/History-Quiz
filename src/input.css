@@ -14,4 +14,31 @@
         --color-button-muted: rgb(99, 102, 241);
     }
   }
-  
+  .option {
+    padding: 10px;
+    margin: 8px 0;
+    background-color: white; /* Light gray background */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+.option:hover {
+    background-color: #f4f3ee; /* Slightly darker gray on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.option.correct {
+    background-color: #bcc452; /* Green background for correct answer */
+    color: white;
+}
+
+.option.incorrect {
+    background-color: #ff570a; /* Red background for incorrect answer */
+    color: white;
+}
+
+.option.disabled {
+    pointer-events: none; /* Disable clicking after selection */
+}

@@ -1,125 +1,149 @@
-//selectam toate elementele necesare
-const start_btn = document.querySelector(".start_btn button");
-const info_box = document.querySelector(".info_box");
-const exit_btn = info_box.querySelector(".buttons .quit");
-const continue_btn = info_box.querySelector(".buttons .restart");
-const quiz_box = document.querySelector(".quiz_box");
-const result_box = document.querySelector(".result_box");
-const option_list = document.querySelector(".option_list");
-const time_line = document.querySelector("header .time_line");
-const timeText = document.querySelector(".timer .time_left");
-const timeCount = document.querySelector(".timer .timer_sec");
+const startBtn = document.querySelector('.start_btn button');
+const infoBox = document.querySelector('.info_box');
+const quizBox = document.querySelector('.quiz_box');
+const resultBox = document.querySelector('.result_box');
+const optionList = document.querySelector('.option_list');
+const timeCount = document.querySelector('.timer_sec');
+const nextBtn = document.querySelector('.next_btn');
 
-//cand apasam butonul start
-start_btn.onclick = () => {
-    info_box.classList.remove("hidden"); 
-    info_box.classList.add("flex"); 
-    start_btn.classList.add("hidden");
+//
 
+
+// Questions and options array
+let questions = [
+        {
+            question: "In ce an a murit Ceausescu?",
+            options: ["1750","2017","1","prima optiune"],
+            answer: "2017"
+        },
+        {
+            question: "In ce an s-a nascut Ceausescu?",
+            options: ["1750","2017","1","prima optiune"],
+            answer: "1"
+        },
+        {
+            question: "Cati copii a avut Ceausescu?",
+            options: ["1","3","2","nu stiu"],
+            answer: "nu stiu"
+        },
+        {
+            question: "Cum va simtiti azi?",
+            options: ["Bine","Prima optiune","Optiunea 2","al treilea raspuns"],
+            answer: "Bine"
+        },
+        {
+            question: "In ce an s-a casatorit Ceausescu?",
+            options: ["1750","2017","1","prima optiune"],
+            answer: "prima optiune"
+        },
+    
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let timer;
+
+
+// Show the info box when the quiz starts
+startBtn.onclick = () => {
+    infoBox.classList.remove('hidden');
 };
-//cand apasam renunta :(
-exit_btn.onclick = () => {
-    info_box.classList.remove('flex');
-    info_box.classList.add("hidden");
-    start_btn.classList.remove("hidden");
-    start_btn.classList.add("flex");
-};
 
-
-//continua buton
-continue_btn.onclick = () => {
-    info_box.classList.remove("flex");
-    info_box.classList.add("hidden");
-    quiz_box.classList.remove("hidden");
-    quiz_box.classList.add("flex");
-    showQuestions(0);
-    queCounter(1);
+// Start the quiz when "Continue" is clicked
+document.querySelector('.restart').onclick = () => {
+    infoBox.classList.add('hidden');
+    quizBox.classList.remove('hidden');
+    showQuestion(currentQuestion);
     startTimer(15);
-    startTimerLine(0);
+};
+document.querySelector('.quit').onclick = () => {
+    window.location.reload(); // Reload the page
+};
+// Quit button logic
+document.querySelector('.qui').onclick = () => {
+    window.location.reload(); // Reload the page
 };
 
 
-let timeValue = 15;
-let que_count  = 0;
-let que_numb = 1;
-let userScore = 0;
-let counter;
-let counterLine;
-let widthValue = 0;
 
-const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
-
-restart_quiz.onclick = () => {
-    quiz_box.classList.remove("hidden");
-    quiz_box.classList.add("flex");
-    result_box.classList.remove("flex");
-    result_box.classList.add("hidden");
-
-     timeValue = 15;
-     que_count  = 0;
-     que_numb = 1;
-     userScore = 0;
-     counter;
-     counterLine;
-     widthValue = 0;
-    showQuestions(que_count);//call showQuestions
-    queCounter(que_numb);//passing que_numb value to queCounter
-    clearInterval(counter);//clear counter
-    clearInterval(counterLine);//clear counterLine
-    startTimer(timeValue); //call startTimer function
-    startTimerLine(widthValue);
-    timeText.textContent = "Time left"; //schimbam textul din timeText in Time Left
-    next_btn.classList.add("hidden");
-
-
-};
-
-//Quit Quiz button
-quit_quiz.onclick = ()=>{
-    window.location.reload; //da reload la window
-
-};
-
-const next_btn = document.querySelector("footer .next_btn");
-const bottom_ques_counter = document.querySelector("footer .total_que");
-
-next_btn.onclick = ()=>{
-    if (que_count < questions.length - 1){//daca question count este mai mic de que_length
-        que_count++;//incrementam valoarea
-        que_numb++;//incrementam que_numb
-        showQuestions(que_count);//calling showQuestions
-        queCounter(que_numb);
-        clearInterval(counter);
-        clearInterval(counterLine);
-        startTimer(timeValue);
-        startTimerLine(widthValue);
-        timeText.textContent - "Time left";
-        next_btn.classList.remove("flex");
-        next_btn.classList.add("hidden");
-
-    }else{
-        clearInterval(counter);
-        clearInterval(counterLine);
+// Show the next question
+nextBtn.onclick = () => {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+        clearInterval(timer);
+        startTimer(15);
+        nextBtn.classList.remove('show');
+    } else {
+        clearInterval(timer);
         showResult();
     }
 };
 
-//luam intrebarile din array
-function showQuestions(index){
-    const que_text = document.querySelector(".que_text");
-    //cream un nou span si div tag intrebare si optiune 
-    let que_tag = '<span>' + questions[index].numb + ". " + questions[index].question + '<span>';
-    let option_tag = '<div class = "option"><span>' + questions[index].options[0] + '</span></div>'
-    + '<div class = "option"><span>' + questions[index].options[1] + '</span></div>'
-    + '<div class = "option"><span>' + questions[index].options[2] + '</span></div>'
-    + '<div class = "option"><span>' + questions[index].options[3] + '</span></div>';
-    que_text.innerHTML = que_tag;
-    option_list.innerHTML = option_tag;
+// Display the current question and options
+function showQuestion(index) {
+    const questionText = document.querySelector('.que_text');
+    let questionTag = `<span>${questions[index].question}</span>`;
+    let optionTag = questions[index].options.map(option => `<div class="option">${option}</div>`).join('');
+    
+    questionText.innerHTML = questionTag;
+    optionList.innerHTML = optionTag;
+    
+    // Add click events to options after rendering
+    const options = optionList.querySelectorAll('.option');
+    options.forEach(option => {
+        option.addEventListener('click', () => optionSelected(option));
+    });
+}
 
-    const option = option_list.querySelectorAll(".option");
-    //set click attribute to all options
-    for(i = 0; i<option.length; i++){
-        option[i].setAttribute("onclick","optionSelected(this)");
+// Handle option selection and check if it's correct
+function optionSelected(answer) {
+    let userAnswer = answer.textContent;
+    let correctAnswer = questions[currentQuestion].answer;
+    
+    // Disable other options after selecting one
+    optionList.querySelectorAll('.option').forEach(option => {
+        option.classList.add('disabled');
+    });
+
+    if (userAnswer === correctAnswer) {
+        answer.classList.add("correct");
+        score++;
+    } else {
+        answer.classList.add("incorrect");
+        // Automatically highlight the correct answer
+        optionList.querySelectorAll('.option').forEach(option => {
+            if (option.textContent === correctAnswer) {
+                option.classList.add("correct");
+            }
+        });
     }
-};
+    nextBtn.classList.add('show');
+}
+
+// Start the countdown timer
+function startTimer(time) {
+    timer = setInterval(function () {
+        timeCount.textContent = time;
+        time--;
+        if (time < 0) {
+            clearInterval(timer);
+            timeCount.textContent = "0";
+            optionList.querySelectorAll('.option').forEach(option => {
+                option.classList.add('disabled');
+            });
+            nextBtn.classList.add('show');
+        }
+    }, 1000);
+}
+
+// Show the quiz result
+function showResult() {
+    quizBox.classList.add('hidden');
+    resultBox.classList.remove('hidden');
+    let scoreText = resultBox.querySelector('.score_text');
+    scoreText.innerHTML = `<span> Ai raspuns corect la <p>${score}</p> din <p>${questions.length}</p> intrebari</span>`;
+}
+
+

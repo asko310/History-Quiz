@@ -1,0 +1,166 @@
+const startBtn = document.querySelector('.start_btn button');//selectam butonul de start
+const quizBox = document.querySelector('.quiz_box');//selectam quiz boxul
+
+//adaugam event listener la buton
+startBtn.onclick = ()=>{
+    quizBox.classList.remove('hidden'); //facem quiz box-ul vizibil
+    //dupa pasul 3 adaugam:
+    showQuestions(0);//Aratam prima intrebare
+};
+
+//pas2 cream un array de intrebari
+const questions = [
+    {
+        question: "In ce an a murit Ceausescu?",
+        options: ["1750","2017","1","prima optiune"],
+        answer: "2017"
+    },
+    {
+        question: "In ce an s-a nascut Ceausescu?",
+        options: ["1750","2017","1","prima optiune"],
+        answer: "1"
+    },
+    {
+        question: "Cati copii a avut Ceausescu?",
+        options: ["1","3","2","nu stiu"],
+        answer: "nu stiu"
+    },
+    {
+        question: "Cum va simtiti azi?",
+        options: ["Bine","Prima optiune","Optiunea 2","al treilea raspuns"],
+        answer: "Bine"
+    },
+    {
+        question: "In ce an s-a casatorit Ceausescu?",
+        options: ["1750","2017","1","prima optiune"],
+        answer: "prima optiune"
+    },
+
+];
+let timer;
+let timerDuration = 15;
+//Pasul 3 facem o functie care arata intrebarea
+function showQuestions(index){
+    //selectam unde o sa fie afisate optiunile si intrebarile
+    const questionText = document.querySelector('.que_text');
+    const optionList = document.querySelector('.option_list');
+    const timerDisplay = document.querySelector('.timer_sec');
+
+    //luam intrebarea de la moment si optiunile din array
+    let currentQuestion = questions[index];
+    //afisam intrebarea
+    questionText.innerHTML = `<span>${currentQuestion.question}</span>`;
+
+    //afisam optiunile
+    let optionsHTML = '';
+    currentQuestion.options.forEach(option =>{
+        optionsHTML += `<div class="option">${option}</div>`;
+    });
+    optionList.innerHTML = optionsHTML;
+    //reset timer
+    startTimer(timerDisplay);
+    //adaugam event listeners
+    const options = document.querySelectorAll('.option');
+    options.forEach(option =>{
+        option.addEventListener('click', ()=> SelectOption(option, index));
+    });
+}
+
+//pasul 4 Option selection
+//in functia ShowQuestions mai jos :))
+let score = 0; //keep track la scor
+let totalQuestionsAnswered = 0;// sa vedem cate intrebari au fost raspunse
+//4.2 Functia selectOption care o sa selecteze o optiune
+function selectOption(selectedOption, questionIndex){
+    clearInterval(timer);//oprim timer-ul cand o optiune e selectata
+    //luam raspunsul corect din intrebare
+    const correctAnswer = questions[questionIndex].answer;
+
+    //verificam daca optiunea selectata este corecta
+    const  selectedAnswer = selectOption.getAttribute('data-option');
+    if (selectedAnswer === correctAnswer){
+        selectOption.classList.add('correct');//adaugam o clasa s-o marcam ca corecta
+        score++; //Incrementam scorul
+    } else{
+        selectOption.classList.add('incorrect')//o marcam ca incorecta
+    }
+
+    totalQuestionsAnswered++; //incrementam nr de raspunsuri 
+    //dam disable la a putea alege mai departe
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.style.pointerEvents = 'none';//disable la clicks pe alte optiuni
+    });
+
+    //adaugam delay inainte de a ne muta la alta intrebare
+    setTimeout(()=>{
+        //schimbam intrebarea sau aratam rezultatele
+        moveToNextQuestion(questionIndex);
+    }, 1000);
+}
+
+//4.3 Ne mutam la alta intrebare
+function moveToNextQuestion(currentIndex){
+    const totalQuestions = questions.length;
+    if (currentIndex < totalQuestions - 1){
+        //ne mutam cu intrebarea
+        showQuestions(currentIndex + 1);
+    } else {
+        showResults();
+    }
+}
+function showResults() {
+    quizBox.classList.add('hidden');//ascundem quiz box-ul
+    const resultBox = document.querySelectorAll('.result_box');
+    resultBox.classList.remove('hidden');//aratam box-u
+
+    //aratam rezultatele
+    const scoreText = document.querySelector('.score_text');
+    scoreText.innerHTML = 'Ai finisat quiz-ul cu un scor de ${score} din ${questions.length}'
+    //restart button event listener
+    const restartButton = document.querySelector('.restart');
+    restartButton.addEventListener('click', restartQuiz);
+
+    //adaugam quit
+    const quitButton = document.querySelector('.quit');
+    quitButton.addEventListener('click', () => {
+        window.location.reload(); //ne intoarcem la main menu refresh
+    });
+}
+
+
+
+//5 Display Results
+//1. modificam selectOption()
+//2. am incrementat raspunsurile
+//5.3 Display la rezultate (update la showResult())
+
+
+//6.1 am dat update la showResult() ca sa includa un buton de restart
+function restartQuiz(){
+    score = 0; //Resetam scorul
+    totalQuestionsAnswered = 0;
+    quizBox.classList.remove('hidden');
+    //const resultBox = document.querySelector('.result_box');
+    resultBox.classList.add('hidden');
+    //showQuestions(0)
+}
+function startTimer(displayElement){
+//timer
+if (timer){
+    clearInterval(timer);
+}
+let timeRemaining  = timerDuration;
+timer = setInterval(() => {
+    timeRemaining--;
+    displayElement.textContent = timeRemaining;
+    if (timeRemaining <= 0) {
+        clearInterval(timer);
+        handleTimeOut();
+    }
+}, 1000);
+}
+function handleTimeOut() {
+    //ne mutam cu intrebarea daca timpul se termina
+    moveToNextQuestion(currentQuestionIndex);
+}
