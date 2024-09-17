@@ -7,13 +7,13 @@ const timeCount = document.querySelector('.timer_sec');
 const nextBtn = document.querySelector('.next_btn');
 
 //
-
+//salvam in local storage
 if (localStorage.getItem('quizTaken') === 'true') {
     startBtn.disabled = true;
     startBtn.textContent = 'Ati realizat deja testul :)';
 }
 
-// Questions and options array
+// Array cu intrebari si optiuni
 let questions = [
         {
             question: "In ce an a murit Ceausescu?",
@@ -64,13 +64,13 @@ let score = 0;
 let timer;
 
 
-// Show the info box when the quiz starts
+// Aratam info box cand apasam start
 startBtn.onclick = () => {
     if (localStorage.getItem('quizTaken') === 'true') return; // Nu face nimic dacă testul a fost deja realizat
     infoBox.classList.remove('hidden');
 };
 
-// Start the quiz when "Continue" is clicked
+// Incepe quiz-ul cand apasam pe continue
 document.querySelector('.restart').onclick = () => {
     if (localStorage.getItem('quizTaken') === 'true') return; // Nu face nimic dacă testul a fost deja realizat
     infoBox.classList.add('hidden');
@@ -79,16 +79,16 @@ document.querySelector('.restart').onclick = () => {
     startTimer(15);
 };
 document.querySelector('.quit').onclick = () => {
-    window.location.reload(); // Reload the page
+    window.location.reload(); // Da reload la pagina cand quit
 };
 // Quit button logic
 document.querySelector('.qui').onclick = () => {
-    window.location.reload(); // Reload the page
+    window.location.reload(); // acelasi lucru dar la urma
 };
 
 
 
-// Show the next question
+// Srata urmatoarea intrebare
 nextBtn.onclick = () => {
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
@@ -102,7 +102,7 @@ nextBtn.onclick = () => {
     }
 };
 
-// Display the current question and options
+// Arata intrebarea curenta si optiunile
 function showQuestion(index) {
     const questionText = document.querySelector('.que_text');
     let questionTag = `<span>${questions[index].question}</span>`;
@@ -111,19 +111,19 @@ function showQuestion(index) {
     questionText.innerHTML = questionTag;
     optionList.innerHTML = optionTag;
     
-    // Add click events to options after rendering
+    // Click events dupa render
     const options = optionList.querySelectorAll('.option');
     options.forEach(option => {
         option.addEventListener('click', () => optionSelected(option));
     });
 }
 
-// Handle option selection and check if it's correct
+// Verifica daca optiunea aleasa este corecta
 function optionSelected(answer) {
     let userAnswer = answer.textContent;
     let correctAnswer = questions[currentQuestion].answer;
     
-    // Disable other options after selecting one
+    // Dezactiveaza celelalte optiuni dupa ce ai ales una
     optionList.querySelectorAll('.option').forEach(option => {
         option.classList.add('disabled');
     });
@@ -133,7 +133,7 @@ function optionSelected(answer) {
         score++;
     } else {
         answer.classList.add("incorrect");
-        // Automatically highlight the correct answer
+        // Dam highlight la optiunea corecta
         optionList.querySelectorAll('.option').forEach(option => {
             if (option.textContent === correctAnswer) {
                 option.classList.add("correct");
@@ -143,7 +143,7 @@ function optionSelected(answer) {
     nextBtn.classList.add('show');
 }
 
-// Start the countdown timer
+// Timer de countdown
 function startTimer(time) {
     timer = setInterval(function () {
         timeCount.textContent = time;
@@ -159,14 +159,14 @@ function startTimer(time) {
     }, 1000);
 }
 
-// Show the quiz result
+// Arata rezultatele
 function showResult() {
     quizBox.classList.add('hidden');
     resultBox.classList.remove('hidden');
     let scoreText = resultBox.querySelector('.score_text');
     scoreText.innerHTML = `<span> Ai raspuns corect la <p>${score}</p> din <p>${questions.length}</p> intrebari</span>`;
 
-    // Marcare test ca realizat
+    // Marcheaza testul ca deja realizat
     localStorage.setItem('quizTaken', 'true');
 }
 
