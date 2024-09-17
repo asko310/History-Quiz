@@ -8,6 +8,10 @@ const nextBtn = document.querySelector('.next_btn');
 
 //
 
+if (localStorage.getItem('quizTaken') === 'true') {
+    startBtn.disabled = true;
+    startBtn.textContent = 'Ati realizat deja testul :)';
+}
 
 // Questions and options array
 let questions = [
@@ -62,11 +66,13 @@ let timer;
 
 // Show the info box when the quiz starts
 startBtn.onclick = () => {
+    if (localStorage.getItem('quizTaken') === 'true') return; // Nu face nimic dacă testul a fost deja realizat
     infoBox.classList.remove('hidden');
 };
 
 // Start the quiz when "Continue" is clicked
 document.querySelector('.restart').onclick = () => {
+    if (localStorage.getItem('quizTaken') === 'true') return; // Nu face nimic dacă testul a fost deja realizat
     infoBox.classList.add('hidden');
     quizBox.classList.remove('hidden');
     showQuestion(currentQuestion);
@@ -159,6 +165,9 @@ function showResult() {
     resultBox.classList.remove('hidden');
     let scoreText = resultBox.querySelector('.score_text');
     scoreText.innerHTML = `<span> Ai raspuns corect la <p>${score}</p> din <p>${questions.length}</p> intrebari</span>`;
+
+    // Marcare test ca realizat
+    localStorage.setItem('quizTaken', 'true');
 }
 
 
