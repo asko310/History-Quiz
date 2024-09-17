@@ -36,6 +36,21 @@ let questions = [
             options: ["1750","2017","1","prima optiune"],
             answer: "prima optiune"
         },
+        {
+            question: "Cati dinti are omul adult?",
+            options: ["1","2","rosu sau oranj","verde"],
+            answer: "verde"
+        },
+        {
+            question: "Cum se numeste un melc fara casa?",
+            options: ["Limax","melc","Francez","businessman"],
+            answer: "Limax"
+        },
+        {
+            question: "V-a placut testul?",
+            options: ["da","nu prea","nu","nu..."],
+            answer: "da"
+        },
     
 
 ];
