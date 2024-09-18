@@ -169,5 +169,63 @@ function showResult() {
     // Marcheaza testul ca deja realizat
     localStorage.setItem('quizTaken', 'true');
 }
+//localStorage.setItem('quizTaken', 'false');
 
 
+
+
+
+
+
+
+// Elementele
+const answerInput = document.querySelector('.live_input');
+const submitAnswer = document.querySelector('.live_btns button');
+const answerList = document.querySelector('.answer_list');
+
+let hasSubmitted = localStorage.getItem('hasSubmitted') === 'false'; // Verificam daca userul a dat submit deja
+
+// Dam Load la raspunsuri precedente din Localstorage daca exista
+const savedAnswers = JSON.parse(localStorage.getItem('answers')) || [];
+savedAnswers.forEach(answer => addListItem(answer));
+
+// Dam disable la input si buton daca user-ul o dat deja submit
+if (hasSubmitted) {
+  answerInput.disabled = true;
+  submitAnswer.disabled = true;
+}
+
+// Functie ca sa adaugam raspunsurile la lista
+function addListItem(answerLive) {
+  const li = document.createElement('li');
+  li.textContent = answerLive;
+  answerList.appendChild(li);
+}
+
+// Event listener pentru Submit
+submitAnswer.addEventListener('click', function() {
+  if (hasSubmitted) {
+    alert('Ati trimis deja raspunsul!');
+    return;
+  }
+
+  const answerLive = answerInput.value.trim();
+
+  if (answerLive) {
+    addListItem(answerLive);
+
+    // Stocam data in local storage
+    savedAnswers.push(answerLive);
+    localStorage.setItem('answers', JSON.stringify(savedAnswers));
+
+    // Dam disable la input si submit
+    answerInput.disabled = true;
+    submitAnswer.disabled = true;
+
+    // Marcam ca trimis
+    hasSubmitted = true;
+    localStorage.setItem('hasSubmitted', 'true');
+  }
+});
+//localStorage.removeItem('answers');
+//localStorage.removeItem('hasSubmitted');

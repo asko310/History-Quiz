@@ -138,6 +138,23 @@
     </div>
 
 
+<!--Live answer quiz-->
+<div class="live_answers flex flex-col items-center justify-center py-48">
+<div class="question_cont flex flex-col items-center justify-center">
+    <h1 class="text-2xl font-bold text-primary">Ce opinie aveti despre masline?</h1>
+    <p>Raspunsurile vor fi afisate pe ecran</p>
+</div>
+<div class="live_btns py-6 flex flex-col items-center justify-center">
+    <textarea rows="4" class="live_input border border-secondary border-4 rounded-[24px] w-[400px]  px-4 py-4 my-4 focus:outline-none focus:border-4 focus:border-highlight2 "  placeholder="Scrieti raspunsul..." ></textarea>
+    <button class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Trimite</button>
+</div>
+<div class="mt-6">
+    <h2 class="text-2xl font-bold mb-4 text-primary pt-12">Raspunsurile Elevilor:</h2>
+    <ul class=" answer_list list-disc pl-5 text-highlight font-semibold">
+      <!-- Raspunsurile aici -->
+    </ul>
+  </div>
+</div>
 
     <script>
         const navLinks = document.querySelector('.nav-links')
