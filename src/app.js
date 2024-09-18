@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = await import('@supabase/supabase-js');
 
 const supabaseUrl = 'https://gsotmlcbrcjbgpgfzvvs.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdzb3RtbGNicmNqYmdwZ2Z6dnZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NzczOTgsImV4cCI6MjA0MjI1MzM5OH0.cLbwIHop2B6WB_mYB-W6kMD2ZkZs007B_Brh2NZupQU';
