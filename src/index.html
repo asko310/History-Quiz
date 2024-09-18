@@ -165,6 +165,12 @@
             navLinks.classList.toggle('top-[9%]')
         }
     </script>
+    <script>
+        const supabaseUrl = 'https://gsotmlcbrcjbgpgfzvvs.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdzb3RtbGNicmNqYmdwZ2Z6dnZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NzczOTgsImV4cCI6MjA0MjI1MzM5OH0.cLbwIHop2B6WB_mYB-W6kMD2ZkZs007B_Brh2NZupQU';
+        const supabase = createClient(supabaseUrl, supabaseKey); // Check if this works here
+        console.log(supabase);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/supabase.min.js"></script>
     <script defer src="./app.js"></script>
     <script src="./script.js"></script>
