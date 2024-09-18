@@ -1,3 +1,4 @@
+import.meta.url;
 const { createClient } = await import('@supabase/supabase-js');
 
 const supabaseUrl = 'https://gsotmlcbrcjbgpgfzvvs.supabase.co';
