@@ -175,57 +175,73 @@ function showResult() {
 
 
 
+// Initialize Supabase
+const supabaseUrl = 'https://gsotmlcbrcjbgpgfzvvs.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdzb3RtbGNicmNqYmdwZ2Z6dnZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NzczOTgsImV4cCI6MjA0MjI1MzM5OH0.cLbwIHop2B6WB_mYB-W6kMD2ZkZs007B_Brh2NZupQU';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-
-
-// Elementele
+// Query elements using querySelector (class selectors)
 const answerInput = document.querySelector('.live_input');
 const submitAnswer = document.querySelector('.live_btns button');
 const answerList = document.querySelector('.answer_list');
 
-let hasSubmitted = localStorage.getItem('hasSubmitted') === 'false'; // Verificam daca userul a dat submit deja
+let hasSubmitted = false; // Prevent multiple submissions
 
-// Dam Load la raspunsuri precedente din Localstorage daca exista
-const savedAnswers = JSON.parse(localStorage.getItem('answers')) || [];
-savedAnswers.forEach(answer => addListItem(answer));
-
-// Dam disable la input si buton daca user-ul o dat deja submit
-if (hasSubmitted) {
-  answerInput.disabled = true;
-  submitAnswer.disabled = true;
+// Function to add an answer to the list
+function addListItem(answerText) {
+    const li = document.createElement('li');
+    li.textContent = answerText;
+    answerList.appendChild(li);
 }
 
-// Functie ca sa adaugam raspunsurile la lista
-function addListItem(answerLive) {
-  const li = document.createElement('li');
-  li.textContent = answerLive;
-  answerList.appendChild(li);
+// Function to load answers from Supabase
+async function loadAnswers() {
+    const { data: answers, error } = await supabase
+        .from('answers')
+        .select('*')
+        .order('id', { ascending: true });
+
+    if (error) {
+        console.error('Error loading answers:', error);
+    } else {
+        // Display the loaded answers
+        answers.forEach(answer => addListItem(answer.answer));
+    }
 }
 
-// Event listener pentru Submit
-submitAnswer.addEventListener('click', function() {
-  if (hasSubmitted) {
-    alert('Ati trimis deja raspunsul!');
-    return;
-  }
+// Function to submit an answer
+submitAnswer.addEventListener('click', async function () {
+    if (hasSubmitted) {
+        alert('You have already submitted an answer.');
+        return;
+    }
 
-  const answerLive = answerInput.value.trim();
+    const answerText = answerInput.value.trim();
 
-  if (answerLive) {
-    addListItem(answerLive);
+    if (answerText) {
+        // Insert the answer into Supabase
+        const { data, error } = await supabase
+            .from('answers')
+            .insert([{ answer: answerText }]);
 
-    // Stocam data in local storage
-    savedAnswers.push(answerLive);
-    localStorage.setItem('answers', JSON.stringify(savedAnswers));
+        if (error) {
+            console.error('Error submitting answer:', error);
+        } else {
+            // Add the answer to the list
+            addListItem(answerText);
 
-    // Dam disable la input si submit
-    answerInput.disabled = true;
-    submitAnswer.disabled = true;
-
-    // Marcam ca trimis
-    hasSubmitted = true;
-    localStorage.setItem('hasSubmitted', 'true');
-  }
+            // Disable input and submit button after submitting
+            answerInput.disabled = true;
+            submitAnswer.disabled = true;
+            hasSubmitted = true;
+        }
+    }
 });
-//localStorage.removeItem('answers');
-//localStorage.removeItem('hasSubmitted');
+
+// Load answers when the page is loaded
+window.addEventListener('load', loadAnswers);
+
+
+
+
+
