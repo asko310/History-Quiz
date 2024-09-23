@@ -169,7 +169,7 @@ function showResult() {
     // Marcheaza testul ca deja realizat
     localStorage.setItem('quizTaken', 'true');
 }
-localStorage.setItem('quizTaken', 'false');
+//localStorage.setItem('quizTaken', 'false');
 
 
 
