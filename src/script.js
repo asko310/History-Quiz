@@ -10,7 +10,7 @@ const nextBtn = document.querySelector('.next_btn');
 //salvam in local storage
 if (localStorage.getItem('quizTaken') === 'true') {
     startBtn.disabled = true;
-    startBtn.textContent = 'Ati realizat deja testul :)';
+    startBtn.textContent = 'Ati realizat deja testul';
 }
 
 // Array cu intrebari si optiuni
