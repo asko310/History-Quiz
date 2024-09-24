@@ -1,9 +1,9 @@
-// Import the functions you need from the Firebase SDKs
+// Importam functiile de care avem nevoie din firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
-// Your Firebase configuration
+// Configuratia firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAMyuZNp5BJzFLb4KLEdojCJu5pTypgzu0",
   authDomain: "live-quiz-3821c.firebaseapp.com",
@@ -14,27 +14,27 @@ const firebaseConfig = {
   measurementId: "G-PWC5CVKJZ7"
 };
 
-// Initialize Firebase and Analytics
+// Initializam firebase si analytics
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Initialize Firestore
+//firestore
 const db = getFirestore(app);
 
-// Query elements using querySelector (class selectors)
+// Query elemente
 const answerInput = document.querySelector('.live_input');
 const submitAnswer = document.querySelector('.live_btns button');
 const answerList = document.querySelector('.answer_list');
-let hasSubmitted = false; // Prevent multiple submissions
+let hasSubmitted = false; // Permitem doar un submit
 
-// Function to add an answer to the list in the DOM
+// Functie ca sa adaugam un element pe lista
 function addListItem(answerText) {
   const li = document.createElement('li');
   li.textContent = answerText;
   answerList.appendChild(li);
 }
 
-// Function to load answers from Firestore
+// Functie ca sa dam load la raspunsuri din firestore
 async function loadAnswers() {
   try {
     // Query Firestore to get answers ordered by their timestamp
