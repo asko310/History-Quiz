@@ -82,3 +82,12 @@ submitAnswer.addEventListener('click', async function () {
 
 // Load answers when the page is loaded
 window.addEventListener('load', loadAnswers);
+//////////////////////
+// Function to replace input field with submitted text
+// Function to replace input field with submitted text
+
+
+
+
+
+
