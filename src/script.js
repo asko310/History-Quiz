@@ -16,45 +16,36 @@ if (localStorage.getItem('quizTaken') === 'true') {
 // Array cu intrebari si optiuni
 let questions = [
         {
-            question: "In ce an a murit Ceausescu?",
-            options: ["1750","2017","1","prima optiune"],
-            answer: "2017"
+            question: "totalitatea sistemelor politice care definesc relația dintre stat și societate, când societatea controlează statul regimul politic este unul democratic iar când statul controlează societatea regimul politic este totalitar.",
+            options: ["Totalitarism","Democratie","Regim politic","Regim militar"],
+            answer: "Regim politic"
         },
         {
-            question: "In ce an s-a nascut Ceausescu?",
-            options: ["1750","2017","1","prima optiune"],
-            answer: "1"
+            question: "formă de organizare şi funcţionare a societăţii în care statul controlează toate aspectele vieţii sociale şi individuale.",
+            options: ["Democratie","Regim militar","Totalitarism","Regim Politic"],
+            answer: "Totalitarism"
         },
         {
-            question: "Cati copii a avut Ceausescu?",
-            options: ["1","3","2","nu stiu"],
-            answer: "nu stiu"
+            question: "Formă de organizare și de conducere politică a societății, care proclamă suveranitatea poporului. Formă de guvernare a statului, bazată pe separația puterilor și pe votul universal.",
+            options: ["Democratie","Totalitarism","Regim Politic","Regim militar"],
+            answer: "Democratie"
         },
         {
-            question: "Cum va simtiti azi?",
-            options: ["Bine","Prima optiune","Optiunea 2","al treilea raspuns"],
-            answer: "Bine"
+            question: "In ce an s-a instaurat regimul totalitar in Rusia?",
+            options: ["2024","1917","1918","1916"],
+            answer: "1917"
         },
         {
-            question: "In ce an s-a casatorit Ceausescu?",
-            options: ["1750","2017","1","prima optiune"],
-            answer: "prima optiune"
+            question: "In ce an s-a instaurat regimul totalitar in Italia?",
+            options: ["1917","1922","1918","1924"],
+            answer: "1922"
         },
         {
-            question: "Cati dinti are omul adult?",
-            options: ["1","2","rosu sau oranj","verde"],
-            answer: "verde"
+            question: "In ce an s-a instaurat regimul totalitar in Germania?",
+            options: ["1920","1924","1933","1934"],
+            answer: "1933"
         },
-        {
-            question: "Cum se numeste un melc fara casa?",
-            options: ["Limax","melc","Francez","businessman"],
-            answer: "Limax"
-        },
-        {
-            question: "V-a placut testul?",
-            options: ["da","nu prea","nu","nu..."],
-            answer: "da"
-        },
+        
     
 
 ];

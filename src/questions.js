@@ -2,7 +2,10 @@
 let questions = [
     {
     numb:1,
-    question: "Cati ani are Dumitru?",
+    question: "totalitatea sistemelor politice care definesc relația dintre stat și societate, când societatea
+controlează statul regimul politic este unul democratic iar când statul controlează societatea
+regimul politic este totalitar",
+
     answer: "13",
     options: [
         "12",
