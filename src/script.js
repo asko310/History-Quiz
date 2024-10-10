@@ -6,54 +6,49 @@ const optionList = document.querySelector('.option_list');
 const timeCount = document.querySelector('.timer_sec');
 const nextBtn = document.querySelector('.next_btn');
 
-//
-//salvam in local storage
-if (localStorage.getItem('quizTaken') === 'true') {
-    startBtn.disabled = true;
-    startBtn.textContent = 'Ati realizat deja testul';
-}
-
-// Array cu intrebari si optiuni
 let questions = [
-        {
-            question: "totalitatea sistemelor politice care definesc relația dintre stat și societate, când societatea controlează statul regimul politic este unul democratic iar când statul controlează societatea regimul politic este totalitar.",
-            options: ["Totalitarism","Democratie","Regim politic","Regim militar"],
-            answer: "Regim politic"
-        },
-        {
-            question: "formă de organizare şi funcţionare a societăţii în care statul controlează toate aspectele vieţii sociale şi individuale.",
-            options: ["Democratie","Regim militar","Totalitarism","Regim Politic"],
-            answer: "Totalitarism"
-        },
-        {
-            question: "Formă de organizare și de conducere politică a societății, care proclamă suveranitatea poporului. Formă de guvernare a statului, bazată pe separația puterilor și pe votul universal.",
-            options: ["Democratie","Totalitarism","Regim Politic","Regim militar"],
-            answer: "Democratie"
-        },
-        {
-            question: "In ce an s-a instaurat regimul totalitar in Rusia?",
-            options: ["2024","1917","1918","1916"],
-            answer: "1917"
-        },
-        {
-            question: "In ce an s-a instaurat regimul totalitar in Italia?",
-            options: ["1917","1922","1918","1924"],
-            answer: "1922"
-        },
-        {
-            question: "In ce an s-a instaurat regimul totalitar in Germania?",
-            options: ["1920","1924","1933","1934"],
-            answer: "1933"
-        },
-        
-    
-
+    {
+        question: "Determină un obiectiv politic al lui Carol al II-lea ",
+        options: ["Razboi cu legionarii ","Pace cu legionarii","Alianță militară permanentă cu Germania Nazistă","Promovarea comunismului ca regim de guvernare"],
+        answer: "Pace cu legionarii"
+    },
+    {
+        question: "Precizaţi, pe baza textului, condiţia cerută de Carol al II-lea pentru ca Mişcarea Legionară să preia puterea în România.",
+        options: ["Carol II să devină lider al Partidului Comunist Român","Carol II să fie proclamat conducător suprem al Gărzii de Fier","Carol II să fie ales în fruntea Frontului Renașterii Naționale pentru salvarea țării","Carol II să fie numit Căpitanul Mișcării Legionare."],
+        answer: "Carol II să fie numit Căpitanul Mișcării Legionare."
+    },
+    {
+        question: "Care funcție i se propunea lui Zelea Codreanu? ",
+        options: ["Prim-ministru al României","Președinte al Senatului","Șeful guvernului","Ministru al Afacerilor Externe"],
+        answer: "Șeful guvernului"
+    },
+    {
+        question: "De ce Corneliu Zelea Codreanu refuză propunerea regelui?",
+        options: ["Nu dorea să părăsească cariera sa diplomatică internațională","Plănuia să se retragă din viața publică pentru a se dedica afacerilor personale","Legionarii nu sunt pregătiți pentru guvernare","Nu dorea să colaboreze cu partidele liberale aflate la putere la acea vreme"],
+        answer: "Legionarii nu sunt pregătiți pentru guvernare"
+    },
+    {
+        question: "Când are loc lovitura de stat a lui Carol II?",
+        options: ["1930","1937","1938","1936"],
+        answer: "1938"
+    },
+    {
+        question: "Carol al II era fiul lui... ? ",
+        options: ["Alexandru Ioan Cuza","Anatol Durbala","Mihai Viteazul","Ferdinand I"],
+        answer: "Ferdinand I"
+    },
 ];
 
 let currentQuestion = 0;
 let score = 0;
-let timer;
+let totalTestTime = 120;  // 2 minutes in seconds
+let globalTimer;
 
+// Verificam daca testul a fost deja realizat
+if (localStorage.getItem('quizTaken') === 'true') {
+    startBtn.disabled = true;
+    startBtn.textContent = 'Ați realizat deja testul';
+}
 
 // Aratam info box cand apasam start
 startBtn.onclick = () => {
@@ -67,28 +62,25 @@ document.querySelector('.restart').onclick = () => {
     infoBox.classList.add('hidden');
     quizBox.classList.remove('hidden');
     showQuestion(currentQuestion);
-    startTimer(15);
+    startGlobalTimer(120); // Start the 2-minute timer
 };
+
 document.querySelector('.quit').onclick = () => {
     window.location.reload(); // Da reload la pagina cand quit
 };
-// Quit button logic
+
 document.querySelector('.qui').onclick = () => {
     window.location.reload(); // acelasi lucru dar la urma
 };
-
-
 
 // Srata urmatoarea intrebare
 nextBtn.onclick = () => {
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
         showQuestion(currentQuestion);
-        clearInterval(timer);
-        startTimer(15);
         nextBtn.classList.remove('show');
     } else {
-        clearInterval(timer);
+        clearInterval(globalTimer);
         showResult();
     }
 };
@@ -134,18 +126,23 @@ function optionSelected(answer) {
     nextBtn.classList.add('show');
 }
 
-// Timer de countdown
-function startTimer(time) {
-    timer = setInterval(function () {
-        timeCount.textContent = time;
+// Timer pentru intreg testul in format minute:secunde
+function startGlobalTimer(time) {
+    globalTimer = setInterval(function () {
+        let minutes = Math.floor(time / 60); // Calculam minutele
+        let seconds = time % 60; // Calculam secundele
+
+        // Adaugam zero in fata secundelor daca sunt sub 10
+        seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        // Afisam timpul in format minute:secunde
+        timeCount.textContent = `${minutes}:${seconds}`;
+
         time--;
         if (time < 0) {
-            clearInterval(timer);
-            timeCount.textContent = "0";
-            optionList.querySelectorAll('.option').forEach(option => {
-                option.classList.add('disabled');
-            });
-            nextBtn.classList.add('show');
+            clearInterval(globalTimer);
+            timeCount.textContent = "0:00";
+            showResult();
         }
     }, 1000);
 }
@@ -157,10 +154,14 @@ function showResult() {
     let scoreText = resultBox.querySelector('.score_text');
     scoreText.innerHTML = `<span> Ai raspuns corect la <p>${score}</p> din <p>${questions.length}</p> intrebari</span>`;
 
-    // Marcheaza testul ca deja realizat
+    // Marcheaza testul ca deja realizat si schimba butonul
     localStorage.setItem('quizTaken', 'true');
+    startBtn.disabled = true;
+    startBtn.textContent = 'Ați realizat deja testul';
 }
-//localStorage.setItem('quizTaken', 'false');
+
+
+localStorage.setItem('quizTaken', 'false');
 
 
 

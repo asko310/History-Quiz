@@ -65,15 +65,15 @@
     <!--Live answer quiz-->
     <div class="live_answers flex flex-col items-center justify-center md:py-48 py-24">
         <div class="question_cont flex flex-col items-center justify-center">
-            <h1 class="text-2xl font-bold text-primary text-center flex items-center justify-center md:w-[50%]">Citește sursa istorică. Definește termenul regim totaliatar, printr-
-                o singură propoziție.</h1>
-            <p class="md:w-[50%] text-sm text-primary text-center flex items-center justify-center pt-4 px-4 ">"... trei mari caracteristici ale regimului [totalitar] se înfățișează
-                privirii oricui caută să-l analizeze: 1) el se reclamă de la o
-                ideologie; 2) se folosește de teroare pentru a orienta
-                comportarea populației; 3) regula generală de viață este [...]
-                domnia nelimitată a voinței de putere. A menține aceste trăsături
-                separate îmi pare indispensabil, nici una dintre ele neputând fi
-                redusă la celelalte." (T. Todorov, Omul dezrădăcinat)</p>
+            <h1 class="text-2xl font-bold text-primary text-center flex items-center justify-center md:w-[50%]">Studiază sursa. Explica care
+                regim politic reprezinta legea data:</h1>
+            <p class="md:w-[50%] text-sm text-primary text-center flex items-center justify-center pt-4 px-4 ">
+                „,nici o nouă organizatiune politica nu va
+                putea lua fiintă în viitor şi nu va putea
+                activa decât în conditiunile şi cu formele
+                prevazute printr-o lege specialã, ce se va
+                întocmi în acest scop". Constitutia din
+                1938.</p>
         </div>
         <div class="live_btns py-6 flex flex-col items-center justify-center">
             <textarea rows="4"
@@ -84,7 +84,7 @@
         </div>
         <div class="mt-6">
             <h2 class="text-2xl font-bold mb-4 text-primary pt-12">Raspunsurile Elevilor:</h2>
-            <ul class=" answer_list list-disc pl-5 text-highlight font-semibold">
+            <ul class=" answer_list list-disc pl-5 text-highlight font-semibold space-y-8">
                 <!-- Raspunsurile aici -->
             </ul>
         </div>
@@ -103,11 +103,11 @@
     <div class="info_title "><span class="text-2xl font-bold text-primary text-center">Regulile Quiz-ului</span>
     </div>
     <div class="info_list flex flex-col">
-        <div class="info">1. Aveti la dispozitie doar <span>15 secunde</span> pentru fiecare intrebare</div>
+        <div class="info">1. Aveti la dispozitie doar <span>2 minute</span> pentru fiecare intrebare</div>
         <div class="info">2. Nu puteti realiza testul mai mult de o data</div>
-        <div class="info">3. Informatia 2,3,4,5 :DDD</div>
-        <div class="info">4. Informatia 2,3,4,5 :DDD</div>
-        <div class="info">5. Informatia 2,3,4,5 :DDD</div>
+        <div class="info">3. Informatia 3,4,5 :DDD</div>
+        <div class="info">4. Informatia 3,4,5 :DDD</div>
+        <div class="info">5. Informatia 3,4,5 :DDD</div>
     </div>
     <div class="buttons">
         <button
@@ -126,7 +126,7 @@
         <div class="title text-2xl font-bold text-primary">Quiz Istorie</div>
         <div class="timer flex gap-5">
             <div class="time_left">Timp ramas:</div>
-            <div class="timer_sec">15</div>
+            <div class="timer_sec">2:00</div>
         </div>
         <div class="time_line"></div>
     </header>
@@ -169,54 +169,6 @@
             class="qui bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Iesi</button>
     </div>
 </div>
-<!--Quiz oart 2-->
-
-
-<form class="md:flex md:gap-5 md:flex-col md:items-center pl-8">
-<div class="container "></div>
-<h1 class="pb-8 title text-2xl font-bold text-primary">Caracteristicile regimurilor totalitare</h1>
-<form id="quizForm" class="">
-    <input type="text" id="answer1" placeholder="Răspuns 1" class="block w-[80%] p-2 border border-gray-300 rounded-lg mb-4 md:w-[50%]">
-    <input type="text" id="answer2" placeholder="Răspuns 2" class="block w-[80%] p-2 border border-gray-300 rounded-lg mb-4 md:w-[50%]">
-    <input type="text" id="answer3" placeholder="Răspuns 3" class="block w-[80%] p-2 border border-gray-300 rounded-lg mb-4 md:w-[50%]">
-    <input type="text" id="answer4" placeholder="Răspuns 4" class="block w-[80%] p-2 border border-gray-300 rounded-lg mb-4 md:w-[50%]">
-    <input type="text" id="answer5" placeholder="Răspuns 5" class="block w-[80%] p-2 border border-gray-300 rounded-lg mb-4 md:w-[50%]">
-    <button type="button" onclick="submitQuiz()" class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight">Submit</button>
-</form>
-
-<div id="results" class="results pt-14 pl-8" style="display: none;">
-    <h2 class="title text-2xl font-bold text-primary pb-8">Răspunsurile corecte</h2>
-    <ul id="correctAnswersList"></ul>
-</div>
-</div>
-<script>
-const correctAnswers = ["1. Puterea aparține partidului de guvernământ/ Lipsa alegerilor democratice;", 
-"2. Controlul statului asupra societății civile/ cetățenii sunt lipsiți de drepturi;", 
-"3. Instituirea cenzurii;", 
-"4. În regimul totalitar comunist, biserica este prigonită/ statul controlează biserica;", 
-"5. O singură ideologie și un singur partid politic."];
-
-function submitQuiz() {
-    const userAnswers = [
-        document.getElementById("answer1").value,
-        document.getElementById("answer2").value,
-        document.getElementById("answer3").value,
-        document.getElementById("answer4").value,
-        document.getElementById("answer5").value
-    ];
-
-    const correctAnswersList = document.getElementById("correctAnswersList");
-    correctAnswersList.innerHTML = ""; // Curăță lista înainte de a afișa răspunsurile corecte
-
-    correctAnswers.forEach((answer, index) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${answer}`;
-        correctAnswersList.appendChild(listItem);
-    });
-
-    document.getElementById("results").style.display = "block";
-}
-</script>
 
 
 
