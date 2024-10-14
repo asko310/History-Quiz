@@ -1,9 +1,9 @@
-// Importam functiile de care avem nevoie din firebase SDK
+// Import functions from Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
-// Configuratia firebase
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAMyuZNp5BJzFLb4KLEdojCJu5pTypgzu0",
   authDomain: "live-quiz-3821c.firebaseapp.com",
@@ -14,36 +14,37 @@ const firebaseConfig = {
   measurementId: "G-PWC5CVKJZ7"
 };
 
-// Initializam firebase si analytics
+// Initialize Firebase and analytics
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-//firestore
+// Firestore
 const db = getFirestore(app);
 
-// Query elemente
+// Query elements
 const answerInput = document.querySelector('.live_input');
 const submitAnswer = document.querySelector('.live_btns button');
 const answerList = document.querySelector('.answer_list');
-let hasSubmitted = false; // Permitem doar un submit
+let hasSubmitted = false; // Allow only one submit
 
-// Functie ca sa adaugam un element pe lista
-function addListItem(answerText) {
+// Function to add an item to the list
+function addListItem(answerText, username) {
   const li = document.createElement('li');
-  li.textContent = answerText;
+  li.textContent = `${username}: ${answerText}`; // Display username alongside the answer
   answerList.appendChild(li);
 }
 
-// Functie ca sa dam load la raspunsuri din firestore
+// Function to load answers from Firestore
 async function loadAnswers() {
   try {
     // Query Firestore to get answers ordered by their timestamp
     const q = query(collection(db, 'answers'), orderBy('timestamp', 'asc'));
     const querySnapshot = await getDocs(q);
     
-    // Add each answer to the answer list in the UI
+    // Add each answer and username to the answer list in the UI
     querySnapshot.forEach((doc) => {
-      addListItem(doc.data().answer);
+      const data = doc.data();
+      addListItem(data.answer, data.username); // Include username when adding to list
     });
   } catch (error) {
     console.error('Error loading answers:', error);
@@ -58,17 +59,19 @@ submitAnswer.addEventListener('click', async function () {
   }
 
   const answerText = answerInput.value.trim();
+  const username = localStorage.getItem('username'); // Get the username from local storage
 
-  if (answerText) {
+  if (answerText && username) {
     try {
-      // Add the answer to Firestore
+      // Add the answer and username to Firestore
       await addDoc(collection(db, 'answers'), {
         answer: answerText,
+        username: username, // Save the username with the answer
         timestamp: new Date() // You can also use FieldValue.serverTimestamp() for server time
       });
       
       // Add the answer to the list in the DOM
-      addListItem(answerText);
+      addListItem(answerText, username); // Include username when adding to the list
 
       // Disable input and submit button after submitting
       answerInput.disabled = true;
@@ -77,17 +80,10 @@ submitAnswer.addEventListener('click', async function () {
     } catch (error) {
       console.error('Error submitting answer:', error);
     }
+  } else {
+    alert('Please provide an answer and make sure you are logged in.');
   }
 });
 
 // Load answers when the page is loaded
 window.addEventListener('load', loadAnswers);
-//////////////////////
-// Function to replace input field with submitted text
-// Function to replace input field with submitted text
-
-
-
-
-
-

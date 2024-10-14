@@ -1,35 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./input.css">
-    <!--FONT-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap"
-        rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script type="module" src="./firebase.js"></script>
 </head>
-
-
-
-<body class="font-[Poppins] ">
-
-
-    <!--Navbar-->
-    <header class=" bg-secondary py-5">
+<body class="font-[Poppins]">
+    <!-- Navbar -->
+    <header class="bg-secondary py-5">
         <nav class="flex justify-between items-center w-[92%] mx-auto">
             <div>
                 <h1 class="text-primary text-2xl font-bold">Testuletz</h1>
             </div>
-            <div
-                class="nav-links z-10 text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
-                <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
+            <div class="nav-links z-10 text-primary">
+                <ul class="flex gap-5 md:flex-row flex-col items-center md:gap-16">
                     <li>
                         <a class="hover:text-highlight" href="./index.html">Teste</a>
                     </li>
@@ -47,16 +34,24 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center gap-6 ">
-                <button
-                    class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Logheaza-te</button>
-                <ion-icon onclick="clickMenu(this)" name="menu"
-                    class="text-3xl cursor-pointer md:hidden text-primary "></ion-icon>
+            <div class="flex items-center gap-6">
+                <div id="usernameDisplay" class="text-primary font-semibold"></div>
+                <button id="loginButton" class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight" onclick="window.location.href='login.html'">
+                    Logheaza-te
+                </button>
             </div>
         </nav>
-
     </header>
-
+    <script type="module">
+        const username = localStorage.getItem('username');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const loginButton = document.getElementById('loginButton');
+    
+        if (username) {
+            usernameDisplay.textContent = `Salut, ${username}`;
+            loginButton.style.display = 'none'; // Hide the login button if the user is logged in
+        }
+    </script>
 
 
 
