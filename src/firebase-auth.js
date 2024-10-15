@@ -27,7 +27,6 @@ signupForm.addEventListener('submit', async (e) => {
     } catch (error) {
         alert("Error creating account: " + error.message);
         console.error(error);
-        localStorage.removeItem('username');
     }
 });
 
