@@ -13,6 +13,13 @@
         href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- Firebase App (required) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+<!-- Firebase Auth (optional, if you're using authentication) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+<!-- Firebase Firestore (optional, if you're using Firestore) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+
 </head>
 <body class="font-[Poppins]">
     <!-- Navbar -->
@@ -25,7 +32,7 @@
                 class="nav-links z-10 text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
                 <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
                     <li>
-                        <a class="hover:text-highlight" href="./index.html">Teste</a>
+                        <a class="hover:text-highlight text-highlight" href="./index.html">Teste</a>
                     </li>
                     <li>
                         <a class="hover:text-highlight" href="./grup1.html">Grup 1</a>
@@ -34,7 +41,7 @@
                         <a class="hover:text-highlight" href="./grup2.html">Grup 2</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight text-highlight" href="./grup3.html">Grup 3</a>
+                        <a class="hover:text-highlight " href="./grup3.html">Grup 3</a>
                     </li>
                     <li>
                         <a class="hover:text-highlight" href="./despre.html">Despre noi</a>
@@ -69,15 +76,10 @@
     <!--Live answer quiz-->
     <div class="live_answers flex flex-col items-center justify-center md:py-48 py-24">
         <div class="question_cont flex flex-col items-center justify-center">
-            <h1 class="text-2xl font-bold text-primary text-center flex items-center justify-center md:w-[50%]">Studiază sursa. Explica care
-                regim politic reprezinta legea data:</h1>
+            <h1 class="text-2xl font-bold text-primary text-center flex items-center justify-center md:w-[50%]">Studiază imaginea.</h1>
+                <img src="https://scontent.fkiv1-1.fna.fbcdn.net/v/t1.6435-9/44440337_1081756925331990_3389638535609843712_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f798df&_nc_ohc=OcCoV6eIt1YQ7kNvgF4ndCM&_nc_zt=23&_nc_ht=scontent.fkiv1-1.fna&_nc_gid=Awm4mgQB3QWOzi78Um_oFWG&oh=00_AYCy2QAcsrODw0C4uYp0iEEBP9RwcDIKqU_6-frjr8uw2w&oe=6736126F">
             <p class="md:w-[50%] text-sm text-primary text-center flex items-center justify-center pt-4 px-4 ">
-                „,nici o nouă organizatiune politica nu va
-                putea lua fiintă în viitor şi nu va putea
-                activa decât în conditiunile şi cu formele
-                prevazute printr-o lege specialã, ce se va
-                întocmi în acest scop". Constitutia din
-                1938.</p>
+                Exprimă-ți, printr-o propoziție, opinia despre soarta teritoriilor românești, din stânga și drepta Nistrului, în perioada 1917-1940.</p>
         </div>
         <div class="live_btns py-6 flex flex-col items-center justify-center">
             <textarea rows="4"
@@ -174,7 +176,13 @@
     </div>
 </div>
 
-
+<!-- Scoruri utilizatori -->
+<div class="scoreboard">
+    <h2 class="text-2xl font-bold text-primary">Clasament:</h2>
+    <ul class="scoreboard_list">
+        <!-- Lista va fi populată din JavaScript -->
+    </ul>
+</div>
 
 
 <script type="module" src="./app.js"></script>
@@ -186,7 +194,7 @@
                 navLinks.classList.toggle('top-[9%]')
             }
         </script>
-        <script src="./script.js"></script>
+        <script type="module" src="./script.js"></script>
 
 
 </body>
