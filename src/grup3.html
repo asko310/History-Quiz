@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grup1</title>
+    <title>Echipa 3</title>
     <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./input.css">
-    <!--FONT-->
+    <script type="module" src="./firebase.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- Firebase App (required) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+<!-- Firebase Auth (optional, if you're using authentication) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+<!-- Firebase Firestore (optional, if you're using Firestore) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+
 </head>
-
-<body class="font-[Poppins] ">
-
-
-    <!--Navbar-->
+<body class="font-[Poppins]">
+    <!-- Navbar -->
     <header class=" bg-secondary py-5">
         <nav class="flex justify-between items-center w-[92%] mx-auto">
             <div>
-                <h1 class="text-primary text-2xl font-bold">Testuletz</h1>
+                <h1 class="text-primary text-2xl font-bold">ChronoEdu</h1>
             </div>
             <div
                 class="nav-links z-10 text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
                 <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
                     <li>
-                        <a class="hover:text-highlight" href="./index.html">Teste</a>
+                        <a class="hover:text-highlight " href="./index.html">Teste</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="./grup1.html">Grup 1</a>
+                        <a class="hover:text-highlight" href="./grup1.html">Echipa 1</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="./grup2.html">Grup 2</a>
+                        <a class="hover:text-highlight" href="./grup2.html">Echipa 2</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight text-highlight" href="./grup3.html">Grup 3</a>
+                        <a class="hover:text-highlight text-highlight" href="./grup3.html">Echipa 3</a>
                     </li>
                     <li>
                         <a class="hover:text-highlight" href="./despre.html">Despre noi</a>
@@ -45,35 +49,47 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6 ">
-                <button
-                    class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Logheaza-te</button>
+                <div id="usernameDisplay" class="text-primary font-semibold"></div>
+                <button id="loginButton" class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight" onclick="window.location.href='login.html'">
+                    Logheaza-te
+                </button>
                 <ion-icon onclick="clickMenu(this)" name="menu"
                     class="text-3xl cursor-pointer md:hidden text-primary "></ion-icon>
             </div>
         </nav>
 
     </header>
+    <script type="module">
+        const username = localStorage.getItem('username');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const loginButton = document.getElementById('loginButton');
+        if (username) {
+            usernameDisplay.textContent = `Salut, ${username}`;
+            loginButton.style.display = 'none'; // Hide the login button if the user is logged in
+        }
+    </script>
 
-    <h1 class="text-primary font-bold text-2xl">Grup 3</h1>
+    </header>
+
+    <h1 class="text-primary font-bold text-2xl flex flex-col items-center justify-center p-4">Echipa 3</h1>
     <div class=" flex flex-col items-center justify-center">
-        <p class=" text-sm text-primary text-center flex items-center justify-center pt-4 px-4 md:w-[50%]"> Sursa C.  
-
-            „Pe malul stâng al Nistrului, de la Kameneț-Podolsk și până la Marea Neagră, locuiește o populație de  
-            
-            7 000 000 de români-moldoveni blânzi și umiliți… Moldovenii au ocupat aceste locuri încă de pe vremurile expansiunii romanilor de la munți spre răsărit și ale descălecatului Moldovei în veacul al XIV-lea.  
-            
-            Vicisitudinile istoriei au vrut ca acum 14 ani acești români să fie înglobați în Uniunea Sovietică… Soviete 
-            
-            le urmăresc metodic distrugerea religiei, obiceiurilor și a familiei moldovenilor. Li se confiscă produsul muncii  
-            
-            lor, li se sechestrează averea, oricât de mică ar fi ea, și îi silesc cu forța să se înscrie în gospodăriile colective  
-            
-            «colhozuri», unde ei sunt sortiți unei existențe de sclavi… De la o vreme guvernul comunist al republicii a dispus ca moldovenii să fie deportați treptat în Siberia și în regiunea Arhanghelsk din nordul Rusiei, unde nu-i așteaptă decât moartea. Aceasta nu este decât aducerea la îndeplinire a planului infernal sovietic de a extermina completamente această populație neadaptabilă comunismului.” (Memoriul românilor transnistreni înaintat Ligii Națiunilor, martie 1932) 
-            
-            Reflecție. Legătura cauză-efect.
+        <p class=" text-sm text-primary text-center flex items-center justify-center pt-4 px-4 md:w-[50%]">SURSA C.
+            Noua Politică Economică (NEP) a fost cursul economic urmat în Rusia Sovietică din 1921, care
+            a înlocuit politica „comunismului de război”. NEP a fost o încercare de a folosi relațiile
+            mărfuri-bani, pentru a relansa economia. În sectorul agricol, prodrazviorstka a fost înlocuită cu
+            un impozit mai mic pe produse, în 1923-1924 țăranilor li s-a permis să plătească un impozit în
+            natură pe produse și bani. A fost admis comerțul privat. S-a realizat trecerea întreprinderilor din
+            proprietatea statului în arendă privată, s-a permis deschiderea de mici întreprinderi private. Era
+            permisă forța de muncă angajată. Cele mai mari și mai avansate fabrici și uzine s-au unit în
+            trusturi de stat. Sistemul de carduri pentru distribuirea alimentelor și mărfurilor a fost desființat.
+            Salariile au început să fie achitate în bani. Au fost restaurate iarmaroacele mari din Nijni
+            Novgorod, Baku, Irbit, Kiev etc. S-au deschis bursele comerciale. În 1921-1924 a fost realizată
+            reforma financiară. A fost creat sistemul bancar. Au fost introduse impozite directe și indirecte
+            (comerciale, venituri, agricole, accize la bunurile de larg consum, taxe locale). Toate aceste
+            măsuri au revigorat economia. - Manual clasa XII
             </div>
      <!--PARTEA CU CARTILE-->
-     <div class="flex flex-col items-center justify-center">
+     <div class="flex flex-col p-4">
         <div>
             <h2 class="text-2xl font-bold text-primary pt-12">Titlul</h2>
             <input type="text" id="input11" class="border border-secondary border-4 rounded-[24px] md:w-[400px] w-[270px] px-4 py-4 my-4 focus:outline-none focus:border-4 focus:border-highlight2" >

@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grup1</title>
+    <title>Echipa 2</title>
     <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./input.css">
-    <!--FONT-->
+    <script type="module" src="./firebase.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- Firebase App (required) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+<!-- Firebase Auth (optional, if you're using authentication) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+<!-- Firebase Firestore (optional, if you're using Firestore) -->
+<script type = "module" src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+
 </head>
-
-<body class="font-[Poppins] ">
-
-
-    <!--Navbar-->
+<body class="font-[Poppins]">
+    <!-- Navbar -->
     <header class=" bg-secondary py-5">
         <nav class="flex justify-between items-center w-[92%] mx-auto">
             <div>
-                <h1 class="text-primary text-2xl font-bold">Testuletz</h1>
+                <h1 class="text-primary text-2xl font-bold">ChronoEdu</h1>
             </div>
             <div
                 class="nav-links z-10 text-primary md:static md:min-h-fit md:w-auto absolute bg-secondary min-h-80 w-full left-0 top-[-100%] py-24 md:py-0">
                 <ul class="flex gap-5 md:flex-row flex-col  items-center md:gap-16 ">
                     <li>
-                        <a class="hover:text-highlight" href="./index.html">Teste</a>
+                        <a class="hover:text-highlight " href="./index.html">Teste</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="./grup1.html">Grup 1</a>
+                        <a class="hover:text-highlight" href="./grup1.html">Echipa 1</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight text-highlight" href="./grup2.html">Grup 2</a>
+                        <a class="hover:text-highlight text-highlight" href="./grup2.html">Echipa 2</a>
                     </li>
                     <li>
-                        <a class="hover:text-highlight" href="./grup3.html">Grup 3</a>
+                        <a class="hover:text-highlight " href="./grup3.html">Echipa 3</a>
                     </li>
                     <li>
                         <a class="hover:text-highlight" href="./despre.html">Despre noi</a>
@@ -45,25 +49,49 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6 ">
-                <button
-                    class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight ">Logheaza-te</button>
+                <div id="usernameDisplay" class="text-primary font-semibold"></div>
+                <button id="loginButton" class="bg-black text-secondary px-5 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:bg-highlight" onclick="window.location.href='login.html'">
+                    Logheaza-te
+                </button>
                 <ion-icon onclick="clickMenu(this)" name="menu"
                     class="text-3xl cursor-pointer md:hidden text-primary "></ion-icon>
             </div>
         </nav>
 
     </header>
-    <h1 class="text-primary font-bold text-2xl">Grup 2</h1>
+    <script type="module">
+        const username = localStorage.getItem('username');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const loginButton = document.getElementById('loginButton');
+        if (username) {
+            usernameDisplay.textContent = `Salut, ${username}`;
+            loginButton.style.display = 'none'; // Hide the login button if the user is logged in
+        }
+    </script>
+
+    </header>
+    <h1 class="text-primary font-bold text-2xl flex flex-col items-center justify-center p-4">Echipa 2</h1>
     <div class=" flex flex-col items-center justify-center">
         <p class=" text-sm text-primary text-center flex items-center justify-center pt-4 px-4 md:w-[50%]">
-            Sursa B.  
-
-            „2. Republica Moldovenească ar putea juca același rol de factor politico-propagandistic pe care îl joacă Republica Bielorusă față de Polonia și Republica Carelă față de Finlanda. Ea ar focaliza atenția și simpatia populației basarabene și ar crea pretexte evidente în pretențiile alipirii la Republica Moldovenească a Basarabiei. Din acest punct de vedere, devine imperioasă necesitatea de a se crea anume o republică socialistă, și nu o regiune autonomă în componența URSS. Unirea teritoriilor de pe ambele părți ale Nistrului ar servi drept breșă strategică a URSS față de Balcani (prin Dobrogea) și față de Europa Centrală (prin Bucovina și Galiția), pe care URSS le-ar putea folosi drept cap de pod în scopuri militare și politice. [...] Ruperea Basarabiei de România, la rândul său, va avea o serie de consecințe, de ordin internațional: a. În primul rând, acest fapt va zdruncina unitatea «României Mari», național-consolidate și va lovi autoritatea morală a burgheziei, care mai bravează până în prezent cu realizarea idealului național român. b. Același fapt va servi drept un impuls suplimentar în tendința provinciilor nou-alăturate (la România) la autodeterminarea lor națională. Iar organizarea (de stat) a minorităților naționale (a bulgarilor, a găgăuzilor), care vor trăi în limitele viitoarei Republici Moldovenești, va servi drept exemplu pentru minoritățile naționale, care populează Vechiul Regat român [...]” Memoriu cu privire la necesitatea creării Republicii Autonome Sovietice Socialiste Moldovenești,  
-            
-            Moscova, 4 februarie 1924 
+            SURSA B.
+            „După Primul Război Mondial, situația țării era catastrofală. Între 17 mai 1918 și 25 octombrie
+            1922/16 iulie 1923, statul sovietic s-a confruntat cu un Război civil. În perioada războiului
+            guvernul bolșevic a implementat politica comunismului de război (1818-1921), în scopul
+            aprovizionării Armatei Roșii și a orașelor. Principalele acțiuni au fost: naţionalizarea industriei;
+            monopolizarea de stat a multor ramuri ale agriculturii; militarizarea muncii (orientare spre
+            industria militară); lichidarea băncilor private și a depozitelor; interzicerea comerțului privat și
+            restrângerea relațiilor mărfă-bani; monopolul comerțului exterior; serviciul de muncă forțată;
+            prodrazviorstka, rechiziționarea forțată a produselor de la țărani fără compensare; plata
+            salariului era efectuată în produse industriale, s-a introdus sistemul de cartele alimentare.
+            Comunismul de război s-a caracterizat printr-un grad înalt de centralizare a întregii economii. În
+            1921-1922, în regiunile Volga, Caucazul de Nord, Ural, Kazahstan, centrul Rusiei Sovietice și
+            Ucraina era foamete, victime fiind 2-5 mil. de oameni. Politica comunismului de război s-a
+            dovedit a fi un eșec, deoarece nu și-a atins obiectivele economice: agricultura era distrusă,
+            producția industrială a scăzut. În dorința sa de a forța poporul să se supună puterii sovietice, s-a
+            aplicat teroarea. ” - Manual clasa XII
             </div>
      <!--PARTEA CU CARTILE-->
-     <div class="flex flex-col items-center justify-center">
+     <div class="flex flex-col p-4">
         <div>
             <h2 class="text-2xl font-bold text-primary pt-12">Titlul</h2>
             <input type="text" id="input6" class="border border-secondary border-4 rounded-[24px] md:w-[400px] w-[270px] px-4 py-4 my-4 focus:outline-none focus:border-4 focus:border-highlight2" >

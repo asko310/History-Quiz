@@ -37,39 +37,54 @@ let hasSubmitted = false; // Allow only one submit
 // Questions array
 let questions = [
     {
-        question: "În componența cărui stat intră teritoriul din stânga Nistrului, la momentul anului 1924?",
-        options: ["Polonia", "URSS", "Ungaria", "România"],
-        answer: "URSS"
+        question: "Care dintre următoarele a fost principala politică economică a Uniunii Sovietice între 1918 și 1921?",
+        options: ["Noua Politică Economică (NEP)", "Comunismul de război", "Planul cincinal", "Colectivizarea agriculturii"],
+        answer: "Comunismul de război"
     },
     {
-        question: "Numește grupul de inițiativă care vine cu propunerea de creare a RASSM.",
-        options: ["Grupul celor 10", "Comitetul de Acțiune Națională", " Liga Națională a Femeilor", "Asociația Tineretului Democrat"],
-        answer: "Grupul celor 10"
+        question: "Ce reformă a fost introdusă de Lenin prin Noua Politică Economică (NEP) în 1921?",
+        options: ["Naționalizarea completă a industriei", "Permisiunea limitată a inițiativei private și a pieței libere", "Înființarea kolhozurilor", "Desființarea proprietății private"],
+        answer: "Permisiunea limitată a inițiativei private și a pieței libere"
     },
     {
-        question: "Când este primită hotărârea despre crearea RASSM?",
-        options: ["10 octombrie 1927", "11 octombrie 1926", "13 octombrie 1925", "12 octombrie 1924"],
-        answer: "12 octombrie 1924"
+        question: "Ce scop principal avea „Planul cincinal” lansat de Stalin în 1928?",
+        options: ["Dezvoltarea agriculturii", "Industrializarea rapidă a Uniunii Sovietice", "Creșterea exporturilor de produse agricole", "Liberalizarea pieței muncii"],
+        answer: "Industrializarea rapidă a Uniunii Sovietice"
     },
     {
-        question: "În componența cărei republici unionale intră RASSM?",
-        options: ["Republica Sovietică Estoniană", "Republica Socialistă Lituaniană", "RSS Ucraineană", "RSS Azerbaidjană"],
-        answer: "RSS Ucraineană"
+        question: "Cum a fost afectată agricultura de politicile economice sovietice între 1928 și 1933?",
+        options: ["Agricultorii au primit mai multe terenuri pentru proprietatea privată", "A fost introdusă colectivizarea forțată a gospodăriilor țărănești.", "Productivitatea agricolă a crescut dramatic", "A fost promovată agricultura de subzistență"],
+        answer: "A fost introdusă colectivizarea forțată a gospodăriilor țărănești."
     },
     {
-        question: "Care a fost prima capitală a RASSM?",
-        options: ["Chișinău", "Tiraspol", "Bălți", "Balta"],
-        answer: "Balta"
+        question: "Ce consecință majoră a avut colectivizarea forțată a agriculturii asupra populației?",
+        options: ["Creșterea producției agricole", "Îmbunătățirea standardului de viață al țăranilor", "Foametea catastrofală din Ucraina și alte regiuni (Holodomor)", "Redistribuirea echitabilă a resurselor alimentare"],
+        answer: "Foametea catastrofală din Ucraina și alte regiuni (Holodomor)"
     },
     {
-        question: "Până când a existat RASSM? (anul)",
-        options: ["1940", "1956", "1965", "1972"],
-        answer: "1940"
+        question: "Ce organizație economică a fost înființată pentru a coordona planificarea centralizată a economiei sovietice?",
+        options: ["Comitetul pentru Agricultură", "Gosplan", "Comintern", "Sovietul Suprem"],
+        answer: "Gosplan"
     },
     {
-        question: "Numește 2 politici economice aplicate de autoritățile sovietice, după 1924, în spațiul din stânga Nistrului.",
-        options: ["Colectivizare", "Liberalizarea comertului", "deindustrializarea", "Descentralizarea economică"],
-        answer: "Colectivizare"
+        question: "În ce domeniu a investit masiv Uniunea Sovietică în timpul primului Plan cincinal (1928-1932)?",
+        options: ["Servicii sociale", "Infrastructura militară", "Industria grea și producția de oțel", "Industria textilă"],
+        answer: "Industria grea și producția de oțel"
+    },
+    {
+        question: "Cum a răspuns Uniunea Sovietică la criza economică mondială din 1929?",
+        options: ["A redus producția industrială pentru a evita colapsul pieței", "A continuat politica de izolare economică și planificare centralizată", "A împrumutat fonduri de la statele capitaliste", "A început să colaboreze cu alte țări socialiste pentru ajutor economic"],
+        answer: "A continuat politica de izolare economică și planificare centralizată"
+    },
+    {
+        question: "Care a fost efectul principal al planificării centralizate asupra economiei sovietice în anii 1930?",
+        options: ["Creșterea masivă a industriei grele, dar lipsa bunurilor de consum", "Liberalizarea economiei și creșterea concurenței", "Reducerea birocrației economice", "O tranziție rapidă către economia de piață"],
+        answer: "Creșterea masivă a industriei grele, dar lipsa bunurilor de consum"
+    },
+    {
+        question: "Ce măsură economică a fost introdusă de Stalin pentru a elimina opoziția internă împotriva colectivizării și industrializării forțate?",
+        options: ["Desființarea completă a proprietății private", "Lansarea „Marilor Epurări”", "Introducerea salariului minim garantat", "Implementarea unei noi legislații privind comerțul liber"],
+        answer: "Lansarea „Marilor Epurări”"
     },
 ];
 
@@ -200,7 +215,7 @@ async function showResult() {
 
     if (currentUser) {
         const userId = currentUser.uid;
-        const username = currentUser.displayName || "Unknown User"; // Fallback in case displayName is not set
+        const username = currentUser.displayName || "User"; // Fallback in case displayName is not set
         const userScore = { username, score };
 
         console.log("Saving score for:", username, "with score:", score); // Debugging log
@@ -261,7 +276,7 @@ async function displayScores() {
 displayScores();
 
 
-//slocalStorage.setItem('quizTaken', 'false');
+slocalStorage.setItem('quizTaken', 'false');
 
 
 
