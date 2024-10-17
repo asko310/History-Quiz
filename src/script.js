@@ -276,7 +276,7 @@ async function displayScores() {
 displayScores();
 
 
-localStorage.setItem('quizTaken', 'false');
+//localStorage.setItem('quizTaken', 'false');
 
 
 
