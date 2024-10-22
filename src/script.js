@@ -37,60 +37,60 @@ let hasSubmitted = false; // Allow only one submit
 // Questions array
 let questions = [
     {
-        question: "Care dintre următoarele a fost principala politică economică a Uniunii Sovietice între 1918 și 1921?",
-        options: ["Noua Politică Economică (NEP)", "Comunismul de război", "Planul cincinal", "Colectivizarea agriculturii"],
-        answer: "Comunismul de război"
+        question: "Care a fost unul dintre principalele evenimente care a marcat începutul Marii Crize Economice?",
+        options: ["Căderea bursei de valori de la New York", "Declanșarea Primului Război Mondial", "Criza petrolului", "Războiul civil din Rusia"],
+        answer: "Căderea bursei de valori de la New York"
     },
     {
-        question: "Ce reformă a fost introdusă de Lenin prin Noua Politică Economică (NEP) în 1921?",
-        options: ["Naționalizarea completă a industriei", "Permisiunea limitată a inițiativei private și a pieței libere", "Înființarea kolhozurilor", "Desființarea proprietății private"],
-        answer: "Permisiunea limitată a inițiativei private și a pieței libere"
+        question: "În ce zi este cunoscută prăbușirea pieței bursiere din 1929, denumită \"Marțea Neagră\"?",
+        options: ["15 martie 1929", "24 octombrie 1929", "29 octombrie 1929", "10 noiembrie 1929"],
+        answer: "29 octombrie 1929"
     },
     {
-        question: "Ce scop principal avea „Planul cincinal” lansat de Stalin în 1928?",
-        options: ["Dezvoltarea agriculturii", "Industrializarea rapidă a Uniunii Sovietice", "Creșterea exporturilor de produse agricole", "Liberalizarea pieței muncii"],
-        answer: "Industrializarea rapidă a Uniunii Sovietice"
+        question: "Ce sector economic a fost cel mai grav afectat la începutul Marii Crize Economice?",
+        options: ["Sectorul agricol", "Sectorul industrial", "Sectorul bancar", "Sectorul comerțului internațional"],
+        answer: "Sectorul bancar"
     },
     {
-        question: "Cum a fost afectată agricultura de politicile economice sovietice între 1928 și 1933?",
-        options: ["Agricultorii au primit mai multe terenuri pentru proprietatea privată", "A fost introdusă colectivizarea forțată a gospodăriilor țărănești.", "Productivitatea agricolă a crescut dramatic", "A fost promovată agricultura de subzistență"],
-        answer: "A fost introdusă colectivizarea forțată a gospodăriilor țărănești."
+        question: "Ce program a fost introdus de președintele american Franklin D. Roosevelt pentru a combate efectele crizei economice?",
+        options: ["New Deal", "Planul Marshall", "Proiectul Manhattan", "Pactul Kellogg-Briand"],
+        answer: "New Deal"
     },
     {
-        question: "Ce consecință majoră a avut colectivizarea forțată a agriculturii asupra populației?",
-        options: ["Creșterea producției agricole", "Îmbunătățirea standardului de viață al țăranilor", "Foametea catastrofală din Ucraina și alte regiuni (Holodomor)", "Redistribuirea echitabilă a resurselor alimentare"],
-        answer: "Foametea catastrofală din Ucraina și alte regiuni (Holodomor)"
+        question: "Ce consecință majoră a avut Marea Criză asupra economiei globale?",
+        options: ["Scărea ratei șomajului", "Creșterea producției industriale", "Falimentul a numeroase bănci și companii", "Stabilizarea rapidă a economiilor naționale"],
+        answer: "Falimentul a numeroase bănci și companii"
     },
     {
-        question: "Ce organizație economică a fost înființată pentru a coordona planificarea centralizată a economiei sovietice?",
-        options: ["Comitetul pentru Agricultură", "Gosplan", "Comintern", "Sovietul Suprem"],
-        answer: "Gosplan"
+        question: "Care dintre următoarele măsuri a fost luată pentru a încerca să stabilizeze economia Statelor Unite în timpul crizei?",
+        options: ["Creșterea impozitelor pentru clasa de mijloc", "Închiderea băncilor insolvente și reformarea sistemului bancar", "Reducerea salariilor și pensiilor", "Oprirea completă a investițiilor străine"],
+        answer: "Închiderea băncilor insolvente și reformarea sistemului bancar"
     },
     {
-        question: "În ce domeniu a investit masiv Uniunea Sovietică în timpul primului Plan cincinal (1928-1932)?",
-        options: ["Servicii sociale", "Infrastructura militară", "Industria grea și producția de oțel", "Industria textilă"],
-        answer: "Industria grea și producția de oțel"
+        question: "Ce efect social major a avut Marea Criză asupra populației?",
+        options: ["Creșterea speranței de viață", "Reducerea semnificativă a șomajului", "Creșterea sărăciei și a migrațiilor interne", "Explozia natalității"],
+        answer: "Creșterea sărăciei și a migrațiilor interne"
     },
     {
-        question: "Cum a răspuns Uniunea Sovietică la criza economică mondială din 1929?",
-        options: ["A redus producția industrială pentru a evita colapsul pieței", "A continuat politica de izolare economică și planificare centralizată", "A împrumutat fonduri de la statele capitaliste", "A început să colaboreze cu alte țări socialiste pentru ajutor economic"],
-        answer: "A continuat politica de izolare economică și planificare centralizată"
+        question: "Cum a afectat criza economică relații internaționale în perioada interbelică?",
+        options: ["A dus la o cooperare internațională sporită", "A amplificat tensiunile economice și politice dintre state", "A determinat o izolare completă a tuturor statelor", "A contribuit la stabilitatea unor noi alianțe militare"],
+        answer: "A amplificat tensiunile economice și politice dintre state"
     },
     {
-        question: "Care a fost efectul principal al planificării centralizate asupra economiei sovietice în anii 1930?",
-        options: ["Creșterea masivă a industriei grele, dar lipsa bunurilor de consum", "Liberalizarea economiei și creșterea concurenței", "Reducerea birocrației economice", "O tranziție rapidă către economia de piață"],
-        answer: "Creșterea masivă a industriei grele, dar lipsa bunurilor de consum"
+        question: "Ce schimbare majoră a avut loc în politică economică mondială după Marea Criză Economică?",
+        options: ["Adoptarea mai largă a politicilor economice de tip laissez-faire", "Creșterea implicării statului în reglementarea economiei", "Eliminarea completă a taxelor vamale", "Creșterea investițiilor externe în țările emergente"],
+        answer: "Creșterea implicării statului în reglementarea economiei"
     },
     {
-        question: "Ce măsură economică a fost introdusă de Stalin pentru a elimina opoziția internă împotriva colectivizării și industrializării forțate?",
-        options: ["Desființarea completă a proprietății private", "Lansarea „Marilor Epurări”", "Introducerea salariului minim garantat", "Implementarea unei noi legislații privind comerțul liber"],
-        answer: "Lansarea „Marilor Epurări”"
+        question: "În această țară se aplică modele de dirijare a economiei pentru a combate efectele crizei?",
+        options: ["Germania", "Franța", "Statele Unite ale Americii", "Marea Britanie"],
+        answer: "Germania"
     },
 ];
 
 let currentQuestion = 0;
 let score = 0;
-let totalTestTime = 120;  // 2 minutes in seconds
+let totalTestTime = 240;  // 4 minute
 let globalTimer;
 
 // Check if the quiz has already been taken
